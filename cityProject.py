@@ -12,16 +12,40 @@ class Building(object):
         block.setFill("gray")
         block.draw(win)
 
-        window1 = Rectangle(Point(self.x + 25, self.y + 25), Point(self.x + 25, self.y + 25))
+        window1 = Rectangle(Point(self.x + 25, self.y + 25), Point(self.x + 50, self.y + 50))
         window1.setFill("yellow")
         window1.draw(win)
+        window2 = Rectangle(Point(self.x + 100, self.y + 25), Point(self.x + 75, self.y + 50))
+        window2.setFill("yellow")
+        window2.draw(win)
+        window3 = Rectangle(Point(self.x + 50, self.y + 75 ), Point(self.x + 25 , self.y + 100 ))
+        window3.setFill("yellow")
+        window3.draw(win)
+        window4 = Rectangle(Point(self.x + 75 , self.y + 75 ), Point(self.x + 100, self.y + 100))
+        window4.setFill("yellow")
+        window4.draw(win)
+
+
+class House(Building):
+    def __init__(self, x:int, y:int, win):
+        super().__init__(x, y, win)
 
     def roof(self, win):
         houseroof = Polygon(Point(self.x, self.y), Point(self.x + 125, self.y), Point(self.x + 63.5, self.y - 62.5))
         houseroof.setFill("brown")
         houseroof.draw(win)
 
-class Skyscraper(Building):
+    def door(self, win):
+        door = Rectangle(Point(self.x + 50 , self.y + 175 ), Point(self.x + 50, self.y + 175))
+        door.setFill("brown")
+        door.draw(win)
+
+#class Skyscraper(Building):
+    #def __init__(self, x:int, y:int, color, win):
+        #super().__init__(x , y)
+
+
+
     
 
     ##def skytop(self, win):
@@ -65,17 +89,10 @@ def main():
     sideWalk2 = CityStreet(0, 600, color_rgb(196, 199, 206))
     sideWalk2.drawSideWalk(win)
 
-    building1 = Building(0,300, "red")
-    building1.building(win)
-
-
-
-    roof = Building(0,300,"brown")
-    roof.roof(win)
+    house = House(0,250,win)
+    house.building(win)
     win.getMouse()
     win.close()
 
 
 main()
-
-
